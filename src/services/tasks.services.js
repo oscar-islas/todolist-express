@@ -12,10 +12,18 @@ const getAllTasks = async () => {
   }
 };
 
-const getTaskById = () => {
+const getTaskById = async (id) => {
   // Completar la lógica para poder obtener una tarea por su id
+  try {
+    const tasks = await getAllTasks();
+    const task = tasks.find((e) => e.id === id);
+    return task;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = {
   getAllTasks,
+  getTaskById,
 };

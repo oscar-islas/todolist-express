@@ -15,7 +15,7 @@ const app = express();
   3. Tratar los datos con respecto a los parametros definidos en el controlador
 */
 
-// routes -> controllers -> servicers
+// routes -> controllers -> services
 
 app.use(tasksRoutes);
 
