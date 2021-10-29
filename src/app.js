@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const tasksRoutes = require('./routes/tasks.routes');
 const middlewareError = require('./middlewares/error.middleware');
 
@@ -18,6 +19,8 @@ const app = express();
 
 // routes -> controllers -> services
 
+app.use(express.json());
+app.use(cors());
 app.use(tasksRoutes);
 
 /*
@@ -25,16 +28,6 @@ app.use(tasksRoutes);
   1. Continuar con la ejecución del siguiente middleware
   2. Mandar un error al middleware para el manejo de errores (siempre y cuando tenga un argumento)
 */
-
-app.get('/prueba', (req, res, next) => {
-  console.log('Llegando al primer middleware de /prueba');
-  next();
-}, (req, res, next) => {
-  console.log('Llegando al segundo middleware de /prueba');
-  next();
-}, (req, res, next) => {
-  console.log('Llegando al tercer middleware de /prueba');
-});
 
 /*
 Errores en el servidor:
